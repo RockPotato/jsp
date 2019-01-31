@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import kr.or.ddit.prod.model.LProdVO;
+import kr.or.ddit.prod.model.LprodVO;
 import kr.or.ddit.prod.model.ProdVO;
 
 import org.junit.Test;

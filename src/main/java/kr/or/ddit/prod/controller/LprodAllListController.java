@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.ddit.prod.model.LProdVO;
+import kr.or.ddit.prod.model.LprodVO;
 import kr.or.ddit.prod.service.ILprodService;
 import kr.or.ddit.prod.service.LprodServiceImpl;
 
@@ -20,7 +20,7 @@ import kr.or.ddit.prod.service.LprodServiceImpl;
 public class LprodAllListController extends HttpServlet {
 	private ILprodService service; 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<LProdVO> allLprod = service.getAllLprod();
+		List<LprodVO> allLprod = service.getAllLprod();
 		request.setAttribute("allLprod",allLprod);
 		request.getRequestDispatcher("/prod/lprodList.jsp").forward(request, response);
 	}

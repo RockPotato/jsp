@@ -1,6 +1,6 @@
 package kr.or.ddit.prod.model;
 
-public class LProdVO {
+public class LprodVO {
 	String lprod_id; // 상품 분류 id
 	String lprod_gu; // 상품 분류 코드
 	String lprod_nm; // 상품 분류 이름

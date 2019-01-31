@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.or.ddit.db.mybatis.MybatisSqlSessionFactory;
 import kr.or.ddit.user.model.UserVO;
+import kr.or.ddit.util.model.PageVO;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -42,5 +43,27 @@ public class UserDaoImpl implements IUserDao {
 		UserVO userVo = openSession.selectOne("user.selectUser",userId);
 		openSession.close();
 		return userVo;
+	}
+
+
+
+	@Override
+	public List<UserVO> selectUserPagingList(PageVO pageVo) {
+		SqlSessionFactory sqlSessionFactory= MybatisSqlSessionFactory.getSqlSessionFactory();
+		SqlSession openSession =sqlSessionFactory.openSession();
+		List<UserVO> userPageList =openSession.selectList("user.selectUserPagingList" , pageVo);
+		openSession.close();
+		return userPageList;
+	}
+
+
+
+	@Override
+	public int getUserCnt() {
+		SqlSessionFactory sqlSessionFactory= MybatisSqlSessionFactory.getSqlSessionFactory();
+		SqlSession openSession =sqlSessionFactory.openSession();
+		int userCnt =openSession.selectOne("user.getUserCnt");
+		openSession.close();
+		return userCnt;
 	};
 }

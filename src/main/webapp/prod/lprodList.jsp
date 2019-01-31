@@ -1,4 +1,4 @@
-<%@page import="kr.or.ddit.prod.model.LProdVO"%>
+<%@page import="kr.or.ddit.prod.model.LprodVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -33,7 +33,7 @@
 		<h1 class="page-header">전체 상품 카테고리 리스트</h1>
 		<!-- userList 정보를 화면에 출력하는 로직 작성  -->
 		<%
-			List<LProdVO> list = (List<LProdVO>) request.getAttribute("allLprod");
+			List<LprodVO> list = (List<LprodVO>) request.getAttribute("allLprod");
 		%>
 		<div class="table-responsive">
 			<table class="table table-striped">

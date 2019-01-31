@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import kr.or.ddit.prod.model.LProdVO;
+import kr.or.ddit.prod.model.LprodVO;
 
 import org.junit.Test;
 
@@ -13,13 +13,13 @@ public class LprodDaoImplTest {
 
 	@Test
 	public void testGetAllLprod() {
-		List<LProdVO> allLprod = dao.getAllLprod();
+		List<LprodVO> allLprod = dao.getAllLprod();
 		assertEquals(17,allLprod.size());
 	}
 	
 	@Test
 	public void testSelectLprod(){
-		LProdVO selectLprod = dao.selectLprod("5");
+		LprodVO selectLprod = dao.selectLprod("5");
 		assertEquals(5,selectLprod.getLprod_id());
 	}
 

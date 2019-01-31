@@ -46,4 +46,6 @@
     </div>
 
   </body>
+  <script src="<%=request.getContextPath()%>/js/cookieUtil.js"></script>
+  <script src="<%=request.getContextPath()%>/js/js.cookie.js"></script>
 </html>
