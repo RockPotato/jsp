@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,9 +33,6 @@
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<h1 class="page-header">전체 상품 카테고리 리스트</h1>
 		<!-- userList 정보를 화면에 출력하는 로직 작성  -->
-		<%
-			List<LprodVO> list = (List<LprodVO>) request.getAttribute("allLprod");
-		%>
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
@@ -45,15 +43,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<%
-						for (int i = 0; i < list.size(); i++) {
-							out.print("<tr class=\"lprodTr\" data-lprodgu=\""+list.get(i).getLprod_gu()+"\">");
-							out.print("<td>" + list.get(i).getLprod_id() + "</td>");
-							out.print("<td>" + list.get(i).getLprod_gu() + "</td>");
-							out.print("<td>" + list.get(i).getLprod_nm() + "</td>");
-							out.print("</tr>");
-						}
-					%>
+				<c:forEach items="${allLprod}" var="lprodVo">
+					<tr class="lprodTr" data-lprodgu="${lprodVo.lprod_gu }">
+						<td>${lprodVo.lprod_id}</td>
+						<td>${lprodVo.lprod_gu}</td>
+						<td>${lprodVo.lprod_nm}</td>
+					</tr>
+				</c:forEach>
 				</tbody>
 			</table>
 		</div>
@@ -95,7 +91,7 @@
 		});
 	</script>
 	
-	<form id="frm" action="<%=request.getContextPath()%>/prodList" method="get">
+	<form id="frm" action="${request.getContextPath()}/prodList" method="get">
 		<input type="hidden" id="lprodGu" name="lprodGu"/>
 	</form>
 	

@@ -19,7 +19,7 @@ import kr.or.ddit.util.model.PageVO;
 /**
  * Servlet implementation class userPageList
  */
-@WebServlet("/userPageList")
+@WebServlet("/userPagingList")
 public class UserPageList extends HttpServlet {
 	
 	
@@ -53,7 +53,7 @@ public class UserPageList extends HttpServlet {
 		request.setAttribute("pageSize",pageSize);
 		request.setAttribute("page",page);
 		//userPagingList를 화면으로 출력할 jsp로 위임(forward)
-		request.getRequestDispatcher("/user/userPageList.jsp").forward(request, response);
+		request.getRequestDispatcher("/user/userPagingList.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
