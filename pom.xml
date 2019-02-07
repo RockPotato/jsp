@@ -75,6 +75,13 @@
 			<artifactId>commons-dbcp2</artifactId>
 			<version>2.5.0</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		
 	</dependencies>
 </project>
 <!-- 프로젝트를 전반적인 설명하는 파일 -->
