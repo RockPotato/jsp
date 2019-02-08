@@ -25,6 +25,14 @@
     <servlet-name>timesTables</servlet-name>
     <url-pattern>/timesTablesUrl</url-pattern>
   </servlet-mapping>
+  <filter>
+  	<filter-name>requestCountFilter</filter-name>
+  	<filter-class>kr.or.ddit.filter.RequestCountFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>requestCountFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
   <error-page>
     <error-code>404</error-code>
     <location>/error/404/404.html</location>
