@@ -23,7 +23,7 @@ public class UserServiceImplTest {
 			System.out.println(allUser.get(i));
 		}
 		
-		assertEquals(5, allUser.size());
+		assertEquals(106, allUser.size());
 		assertNotNull(service.getAllUser());
 	}
 	
@@ -33,5 +33,39 @@ public class UserServiceImplTest {
 			System.out.println(selectUser);
 		assertEquals("moon",selectUser.getUserId());
 	}
-
+	
+	@Test
+	public void testInsertUser(){
+		UserVO userVo = new UserVO();
+		userVo.setUserId("haha");
+		userVo.setUserNm("haha");
+		userVo.setAlias("haha");
+		userVo.setPass("haha1234");
+		userVo.setAddr1("haha");
+		userVo.setAddr2("haha");
+		userVo.setZipcode("34942");
+		int cnt = service.insertUser(userVo);
+		assertEquals(1, cnt);
+	}
+	
+	@Test
+	public void testDeleteUser(){
+		String userId="haha";
+		int cnt = service.deleteUser(userId);
+		assertEquals(1, cnt);
+	}
+	
+	@Test
+	public void testUpdateUser(){
+		UserVO userVo = new UserVO();
+		userVo.setUserId("haha");
+		userVo.setUserNm("haha");
+		userVo.setAlias("haha");
+		userVo.setPass("haha1234");
+		userVo.setAddr1("haha");
+		userVo.setAddr2("haha");
+		userVo.setZipcode("12344");
+		int cnt = service.updateUser(userVo);
+		assertEquals(1, cnt);
+	}
 }

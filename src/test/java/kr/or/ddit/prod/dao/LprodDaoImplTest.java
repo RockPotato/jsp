@@ -10,7 +10,6 @@ import org.junit.Test;
 
 public class LprodDaoImplTest {
 	ILprodDao dao = new LprodDaoImpl();
-
 	@Test
 	public void testGetAllLprod() {
 		List<LprodVO> allLprod = dao.getAllLprod();
@@ -20,7 +19,6 @@ public class LprodDaoImplTest {
 	@Test
 	public void testSelectLprod(){
 		LprodVO selectLprod = dao.selectLprod("5");
-		assertEquals(5,selectLprod.getLprod_id());
+		assertEquals("5",selectLprod.getLprod_id());
 	}
-
 }

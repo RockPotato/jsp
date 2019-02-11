@@ -30,12 +30,13 @@
 	<jsp:include page="/left.jsp"></jsp:include>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<h1 class="page-header">사용자 정보 조회</h1>
-		<form class="form-horizontal" role="form">
+		<form class="form-horizontal" role="form" action="/userModifyForm" method="get">
 			<% UserVO user = (UserVO)request.getAttribute("userVo"); %>
 			<div class="form-group">
 				<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
+				<input type="hidden" value="<%=user.getUserId()%>" id="userId" name="userId" />
 				<div class="col-sm-10">
-					<label class="control-label"><%=user.getUserId()%></label>
+					<label class="control-label" ><%=user.getUserId()%></label>
 				</div>
 			</div>
 
@@ -48,7 +49,7 @@
 			<div class="form-group">
 				<label for="userNm" class="col-sm-2 control-label">별명</label>
 				<div class="col-sm-10">
-					<label class="control-label">미구현</label>
+					<label class="control-label"><%=user.getAlias()%></label>
 				</div>
 			</div>
 			<div class="form-group">

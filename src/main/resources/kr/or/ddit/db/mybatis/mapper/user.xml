@@ -4,14 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
   <select id="getAllUser" resultType="userVo">
-    select	* 
+    select	userid,usernm,pass,alias,addr1,addr2,zipcode,reg_dt 
     from	users
   </select>
   
   <!-- 특정 사용자 조회(userId) selectUser(String userId)
   		query, dao(test), service(test) -->
   <select id="selectUser" resultType="userVo">
-      select	*
+      select	userid,usernm,pass,alias,addr1,addr2,zipcode,reg_dt
       from	users
       where userId=#{userId}	
   </select>
@@ -34,4 +34,28 @@
   	from users
   
   </select>
+
+	<!-- 사용자 입력   -->
+	<insert id="insertUser" parameterType="userVo">
+		insert into users
+				(userid, userNm, alias, addr1, addr2, zipcode, pass, reg_dt)
+		values	(#{userId}, #{userNm}, #{alias}, #{addr1}, #{addr2}, #{zipcode}, #{pass}, sysdate)
+	</insert>
+	
+	<delete id="deleteUser" parameterType="String" >
+		delete from users
+		where	userid = #{userId}
+	</delete>
+	
+	<update id="updateUser" parameterType="userVo">
+		update users
+		set usernm=#{userNm}
+		, alias=#{alias}
+		, addr1=#{addr1}
+		, addr2=#{addr2}
+		, zipcode=#{zipcode}
+		, pass=#{pass}
+		, reg_dt=sysdate
+		where   userid=#{userId}
+	</update>
 </mapper>
