@@ -1,5 +1,6 @@
 package kr.or.ddit.util.log;
 
+//simple logging facade 4 java
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
