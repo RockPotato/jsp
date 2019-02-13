@@ -1,18 +1,26 @@
 package kr.or.ddit.user.controller;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.user.model.UserVO;
 import kr.or.ddit.user.service.IUserService;
 import kr.or.ddit.user.service.UserServiceImpl;
+import kr.or.ddit.util.PartUtil;
 
 @WebServlet("/userModifyForm")
+@MultipartConfig(maxFileSize = 5 * 1024 * 1024, maxRequestSize = 5 * 5 * 1024 * 1024)
 public class UserModifyFormController extends HttpServlet {
 	private IUserService service;
 
@@ -30,6 +38,8 @@ public class UserModifyFormController extends HttpServlet {
 				response);
 	}
 
+	private Logger logger = LoggerFactory
+			.getLogger(UserModifyFormController.class);
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -41,6 +51,10 @@ public class UserModifyFormController extends HttpServlet {
 		// 2-1. 중복체크 통과 : 사용자 정보를 db에 입력
 		// 2-1-1. 사용자 페이징 리스트 1페이지로 이동
 		String userId = (String) req.getParameter("userId");
+		UserVO fileVO = service.selectUser(userId);
+		String filename = fileVO.getFilename();
+		String realFilename = fileVO.getRealFilename();
+		
 		UserVO modifyVo = new UserVO();
 		modifyVo.setUserId(userId);
 		modifyVo.setAddr1((String) req.getParameter("addr1"));
@@ -49,10 +63,26 @@ public class UserModifyFormController extends HttpServlet {
 		modifyVo.setPass((String) req.getParameter("pass"));
 		modifyVo.setUserNm((String) req.getParameter("userNm"));
 		modifyVo.setZipcode((String) req.getParameter("zipcode"));
-		int insertUser = service.updateUser(modifyVo);
+		
+		Part profilePart = req.getPart("profile");
+		if(profilePart.getSize()>0){
+			String contentDisposition = profilePart
+					.getHeader("Content-Disposition");
+			filename = PartUtil
+					.getFileNameFromPart(contentDisposition);
+			realFilename = "d:\\picture\\" +UUID.randomUUID().toString();
+			// 디스크에 기록 (d:\picture\ +realFileName)
+			profilePart.write(realFilename);
+			profilePart.delete();
+		}
+		logger.debug(filename,realFilename);
+		modifyVo.setFilename(filename);
+		modifyVo.setRealFilename(realFilename);
+		
+		int updateUser = service.updateUser(modifyVo);
 
 		// 정상입력(성공)
-		if (insertUser != 0) {
+		if (updateUser != 0) {
 			// req.getRequestDispatcher("/userPagingList").forward(req,resp);
 			resp.sendRedirect(req.getContextPath() + "/user?userId="+userId);
 		}

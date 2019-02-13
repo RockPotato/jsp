@@ -33,8 +33,17 @@
 		<h1 class="page-header">사용자 정보 조회</h1>
 		
 		<form id="frm" action="${pageContext.request.contextPath}/userModifyForm"
-			method="post" class="form-horizontal" role="form">
+			method="post" class="form-horizontal" role="form"
+			enctype="multipart/form-data">
 
+			<div class="form-group">
+				<label for="userNm" class="col-sm-3 control-label">사진</label>
+				<div class="col-sm-9">
+					<img />
+					<input type="file" class="form-control" id="profile" name="profile"
+						placeholder="사진">
+				</div>
+			</div>
 			<div class="form-group">
 				<label for="userNm" class="col-sm-3 control-label">사용자 아이디</label>
 				<div class="col-sm-9">
@@ -121,7 +130,9 @@
 			$("#pass").val("${userVo.pass}");	
 			$("#addr1").val("${userVo.addr1}");	
 			$("#addr2").val("${userVo.addr2}");	
-			$("#zipcode").val("${userVo.zipcode}");	
+			$("#zipcode").val("${userVo.zipcode}");
+			$("img").attr("src","${pageContext.request.contextPath}/profileImg?userId=${userVo.userId}")
+			
 		}
 		function clearData(){
 			$("#userId").val("");
