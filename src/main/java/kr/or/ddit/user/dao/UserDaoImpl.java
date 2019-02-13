@@ -81,4 +81,10 @@ public class UserDaoImpl implements IUserDao {
 		int updateUser = openSession.update("user.updateUser",userVo);
 		return updateUser;
 	}
+
+	@Override
+	public int updateUserPass(SqlSession openSession, UserVO userVo) {
+		int updateUser = openSession.update("user.updateUserPass",userVo);
+		return updateUser;
+	}
 }

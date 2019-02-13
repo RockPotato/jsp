@@ -5,8 +5,12 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
+import kr.or.ddit.db.mybatis.MybatisSqlSessionFactory;
+import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
 import kr.or.ddit.user.model.UserVO;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 
 public class UserServiceImplTest {
@@ -67,5 +71,14 @@ public class UserServiceImplTest {
 		userVo.setZipcode("12344");
 		int cnt = service.updateUser(userVo);
 		assertEquals(1, cnt);
+	}
+//	@Test
+//	public void testEncryptPass(){
+//		String userId = "userId1";
+//		service.encryptPass(userId);
+//	}
+	@Test
+	public void testEncryptPassAll(){
+		service.encryptPassAll();
 	}
 }

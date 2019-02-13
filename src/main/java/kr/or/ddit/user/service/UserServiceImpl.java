@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import kr.or.ddit.db.mybatis.MybatisSqlSessionFactory;
+import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
 import kr.or.ddit.user.dao.IUserDao;
 import kr.or.ddit.user.dao.UserDaoImpl;
 import kr.or.ddit.user.model.UserVO;
@@ -92,5 +93,32 @@ public class UserServiceImpl implements IUserService {
 		openSession.commit();
 		openSession.close();
 		return num;
+	}
+
+	@Override
+	public void encryptPass(String userId) {
+		SqlSessionFactory sqlSessionFactory = MybatisSqlSessionFactory.getSqlSessionFactory();
+		SqlSession openSession = sqlSessionFactory.openSession();
+		UserVO selectUser = userDao.selectUser(openSession,userId);
+		String plainPass = selectUser.getPass();
+		String encrypt = KISA_SHA256.encrypt(plainPass);
+		selectUser.setPass(encrypt);
+		userDao.updateUser(openSession, selectUser);
+		openSession.commit();
+		openSession.close();
+	};
+	@Override
+	public void encryptPassAll() {
+		SqlSessionFactory sqlSessionFactory = MybatisSqlSessionFactory.getSqlSessionFactory();
+		SqlSession openSession = sqlSessionFactory.openSession();
+		List<UserVO> allUser = userDao.getAllUser(openSession);
+		for (UserVO vo :allUser) {
+			String plainPass = vo.getPass();
+			String encrypt = KISA_SHA256.encrypt(plainPass);
+			vo.setPass(encrypt);
+			userDao.updateUserPass(openSession, vo);
+		}
+		openSession.commit();
+		openSession.close();
 	};
 }

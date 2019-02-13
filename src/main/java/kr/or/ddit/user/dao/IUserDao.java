@@ -67,4 +67,6 @@ public interface IUserDao {
 	* Method 설명 : 사용자 수정
 	*/
 	int updateUser(SqlSession openSession,UserVO userVo);
+	
+	int updateUserPass(SqlSession openSession,UserVO userVo);
 }

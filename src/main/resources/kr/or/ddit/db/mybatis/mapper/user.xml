@@ -62,4 +62,8 @@
 		, realFilename=nvl(#{realFilename,jdbcType=VARCHAR},realfilename)
 		where   userid=#{userId}
 	</update>
+	<update id="updateUserPass" parameterType="userVo">
+		update users set pass =#{pass}
+		where	userid=#{userId}
+	</update>
 </mapper>

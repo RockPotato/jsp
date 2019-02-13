@@ -15,4 +15,6 @@ public interface IUserService {
 	int insertUser(UserVO userVo);
 	int deleteUser(String userId);
 	int updateUser(UserVO userVo);
+	void encryptPass(String userId);
+	void encryptPassAll();
 }
