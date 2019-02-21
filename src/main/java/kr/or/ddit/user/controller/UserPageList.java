@@ -34,7 +34,6 @@ public class UserPageList extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		//page, pageSize에 해당하는 파라미터 받기 ==> pageVo
 		//단 파라미터가 없을 경우 page : 1, pageSize : 10;
 		String pageStr = request.getParameter("page");

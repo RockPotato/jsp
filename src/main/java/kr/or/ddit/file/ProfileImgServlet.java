@@ -3,6 +3,8 @@ package kr.or.ddit.file;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.servlet.ServletContext;
@@ -38,6 +40,7 @@ public class ProfileImgServlet extends HttpServlet {
 		UserVO userVO = service.selectUser(userId);
 		// 3-1. realFilename이 존재할 경우
 		FileInputStream fis;
+		
 		if (userVO !=null &&userVO.getRealFilename() != null)
 			// 3-1-1. 해당 경로의 파일을 FileInputStream으로 읽는다
 			fis = new FileInputStream(new File(userVO.getRealFilename()));

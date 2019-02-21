@@ -52,9 +52,9 @@ public class FileUploadServlet extends HttpServlet {
 		// 로깅 레벨이 info : logger.info(...), logger.warn(...), logger.error(...)
 		// 로깅 레벨 error : logger.error(...)
 		// trace, debug, info, warn, error
-		logger.debug("contentType : " + contentType);
-		logger.debug("userId : " + userId);
-		logger.debug("uploadFile : " + uploadFile);
+		logger.info("contentType : " + contentType);
+		logger.info("userId : " + userId);
+		logger.info("uploadFile : " + uploadFile);
 		
 		// part 정보 확인
 //		request.getPart(name);
@@ -66,7 +66,7 @@ public class FileUploadServlet extends HttpServlet {
 //		}
 		Part uploadFilePart = request.getPart("uploadFile");
 		String contentDisposition = uploadFilePart.getHeader("Content-Disposition");
-		logger.debug("contentDisposition : {}",contentDisposition);
+		logger.info("contentDisposition : {}",contentDisposition);
 		
 //		uploadFilePart.write("d:\\picture\\brown.png");
 		
@@ -74,7 +74,7 @@ public class FileUploadServlet extends HttpServlet {
 		//localhost/upload --> 물리적 경로를 확인
 		ServletContext application = getServletContext();
 		String path = application.getRealPath("/upload");
-		logger.debug("path : {}",path);
+		logger.info("path : {}",path);
 		
 //		// InputStream is = uploadFilePart.getInputStream();
 //		ServletInputStream sis = request.getInputStream();
