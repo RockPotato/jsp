@@ -21,7 +21,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/css/dashboard.css"
+<link href="${cp}/css/dashboard.css"
 	rel="stylesheet">
 
 </head>
@@ -40,13 +40,13 @@
 				<label for="userNm" class="col-sm-3 control-label">사진</label>
 				<div class="col-sm-9">
 					<img
-						src="${pageContext.request.contextPath}/profileImg?userId=${userVo.userId}" />
+						src="${cp}/profileImg?userId=${userVo.userId}" />
 					<%-- 					<c:choose> --%>
 					<%-- 						<c:when test="${userVo.filename==null}"> --%>
-					<%-- 							<img src="${pageContext.request.contextPath }/upload/noimg.png"/> --%>
+					<%-- 							<img src="${cp }/upload/noimg.png"/> --%>
 					<%-- 						</c:when> --%>
 					<%-- 						<c:otherwise> --%>
-					<%-- 							<img src="${pageContext.request.contextPath }/upload/${userVo.filename}"/> --%>
+					<%-- 							<img src="${cp }/upload/${userVo.filename}"/> --%>
 					<%-- 						</c:otherwise> --%>
 					<%-- 					</c:choose> --%>
 				</div>

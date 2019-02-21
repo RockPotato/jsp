@@ -20,7 +20,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/css/dashboard.css"
+<link href="${cp}/css/dashboard.css"
 	rel="stylesheet">
 
 </head>
@@ -32,7 +32,7 @@
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		<h1 class="page-header">사용자 정보 조회</h1>
 		
-		<form id="frm" action="${pageContext.request.contextPath}/userModifyForm"
+		<form id="frm" action="${cp}/userModifyForm"
 			method="post" class="form-horizontal" role="form"
 			enctype="multipart/form-data">
 
@@ -131,7 +131,7 @@
 			$("#addr1").val("${userVo.addr1}");	
 			$("#addr2").val("${userVo.addr2}");	
 			$("#zipcode").val("${userVo.zipcode}");
-			$("img").attr("src","${pageContext.request.contextPath}/profileImg?userId=${userVo.userId}")
+			$("img").attr("src","${cp}/profileImg?userId=${userVo.userId}")
 			
 		}
 		function clearData(){

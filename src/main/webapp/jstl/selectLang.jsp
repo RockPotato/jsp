@@ -28,7 +28,7 @@
 
 
 	<form id="frmSelect" method="get"
-		action="${pageContext.request.contextPath}/jstl/selectLang.jsp">
+		action="${cp}/jstl/selectLang.jsp">
 		<select id="lang" name="lang">
 			<!-- name 속성을 부여해야 파라미터 보냄 -->
 			<option value="ko" <c:if test="${lang =='ko'}">selected</c:if>>한국어</option>

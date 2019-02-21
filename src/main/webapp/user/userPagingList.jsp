@@ -21,7 +21,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/css/dashboard.css"
+<link href="${cp}/css/dashboard.css"
 	rel="stylesheet">
 </head>
 
@@ -66,7 +66,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<form action="${pageContext.request.contextPath}/userForm" method="get">
+					<form action="${cp}/userForm" method="get">
 						<button type="submit" class="btn_btn-default">사용자 등록</button>
 					</form>
 					
@@ -82,7 +82,7 @@
 								</c:when>
 								<c:otherwise>
 									<li><a
-										href="${pageContext.servletContext.contextPath }/userPagingList"
+										href="${cp }/userPagingList"
 										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 									</a></li>
 								</c:otherwise>
@@ -95,7 +95,7 @@
 								</c:if>
 
 								<li class="${active }"><a
-									href="${pageContext.servletContext.contextPath }/userPagingList?page=${i}">${i}</a>
+									href="${cp }/userPagingList?page=${i}">${i}</a>
 								</li>
 							</c:forEach>
 
@@ -107,7 +107,7 @@
 								</c:when>
 								<c:otherwise>
 									<li><a
-										href="${pageContext.servletContext.contextPath }/userPagingList?page=
+										href="${cp }/userPagingList?page=
 												${lastPage}"
 										aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 									</a></li>

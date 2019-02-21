@@ -21,7 +21,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/css/dashboard.css"
+<link href="${cp}/css/dashboard.css"
 	rel="stylesheet">
 
 </head>
@@ -88,7 +88,7 @@
 						<c:if test="${page== i}">
 							<c:set var="active" value="active"/>
 						</c:if>
-						<li class="${active}"><a href="${pageContext.servletContext.contextPath }/LprodpageList?page=${i}">${i}</a></li>
+						<li class="${active}"><a href="${cp }/LprodpageList?page=${i}">${i}</a></li>
 					</c:forEach>
 						
 					<c:choose>
@@ -98,7 +98,7 @@
 							</a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="${pageContext.servletContext.contextPath }/LprodpageList?page=${lastPage}"
+							<li><a href="${cp }/LprodpageList?page=${lastPage}"
 								aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 							</a></li>
 						</c:otherwise>

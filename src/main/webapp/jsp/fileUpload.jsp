@@ -10,7 +10,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body>
-	<form action="${pageContext.request.contextPath}/fileUpload" 
+	<form action="${cp}/fileUpload" 
 	method="post" enctype="multipart/form-data">
 		<input type="text" name="userId" value="brown" /> <br/>
 		<input type="file" name="uploadFile"/> <br/>
