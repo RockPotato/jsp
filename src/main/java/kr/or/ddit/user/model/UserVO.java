@@ -3,7 +3,17 @@ package kr.or.ddit.user.model;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class UserVO {
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class UserVO implements HttpSessionBindingListener{
+	
+	private Logger logger = LoggerFactory.getLogger(UserVO.class);
+	
 	private String userId; // 사용자 아이디
 	private String userNm; // 사용자 이름
 	private String alias; // 별명
@@ -109,6 +119,18 @@ public class UserVO {
 	public String getReg_dt_fmt() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		return format.format(reg_dt);
+	}
+
+	@Override
+	public void valueBound(HttpSessionBindingEvent event) {
+		HttpSession session = event.getSession();
+		logger.debug("userVo valueBound : {}",session.getId());
+	}
+
+	@Override
+	public void valueUnbound(HttpSessionBindingEvent event) {
+		HttpSession session = event.getSession();
+		logger.debug("userVo valueUnBound : {}",session.getId());
 	}
 
 }
